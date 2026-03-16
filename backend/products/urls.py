@@ -1,6 +1,7 @@
-from django.urls import path
-from .views import product_list
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
-    path('', product_list),
+    path('admin/', admin.site.urls),
+    path('api/products/', include('products.urls')),
 ]
