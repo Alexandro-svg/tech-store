@@ -66,11 +66,15 @@ export default async function Home() {
               
               <div className="h-40 relative mb-3">
                 <Image
-                  src={`http://127.0.0.1:8000${p.image}`}
-                  alt={p.name}
-                  fill
-                  className="object-cover rounded-xl"
-                />
+  src={
+    p.image.startsWith("http")
+      ? p.image
+      : `http://127.0.0.1:8000${p.image}`
+  }
+  alt={p.name}
+  fill
+  className="object-cover rounded-xl"
+/>
               </div>
 
               <h2 className="text-xl">{p.name}</h2>
