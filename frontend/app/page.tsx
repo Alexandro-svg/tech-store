@@ -8,7 +8,16 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 
-async function getProducts() {
+// 🔥 тип продукта
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+};
+
+// 🔥 fetch с типом
+async function getProducts(): Promise<Product[]> {
   const res = await fetch("http://127.0.0.1:8000/api/products/", {
     cache: "no-store",
   });
@@ -27,6 +36,7 @@ export default async function Home() {
   return (
     <div className="min-h-screen flex flex-col">
 
+      {/* КАРУСЕЛЬ */}
       <section>
         <Carousel className="border-b border-t h-120 relative overflow-hidden">
           <CarouselContent className="relative w-full h-120">
@@ -41,6 +51,7 @@ export default async function Home() {
                 </p>
                 <Button className="text-accent text-2xl p-5">Buy</Button>
               </div>
+
               <div className="h-110 relative aspect-video overflow-hidden rounded-4xl">
                 <Image
                   alt="Front"
@@ -61,20 +72,20 @@ export default async function Home() {
         <h1 className="text-3xl mb-5">Products</h1>
 
         <div className="grid grid-cols-4 gap-5">
-          {products?.map((p) => (
+          {products.map((p) => (
             <div key={p.id} className="border p-4 rounded-2xl">
               
               <div className="h-40 relative mb-3">
                 <Image
-  src={
-    p.image.startsWith("http")
-      ? p.image
-      : `http://127.0.0.1:8000${p.image}`
-  }
-  alt={p.name}
-  fill
-  className="object-cover rounded-xl"
-/>
+                  src={
+                    p.image.startsWith("http")
+                      ? p.image
+                      : `http://127.0.0.1:8000${p.image}`
+                  }
+                  alt={p.name}
+                  fill
+                  className="object-cover rounded-xl"
+                />
               </div>
 
               <h2 className="text-xl">{p.name}</h2>
