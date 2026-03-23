@@ -18,7 +18,7 @@ type Product = {
 
 // 🔥 fetch с типом
 async function getProducts(): Promise<Product[]> {
-  const res = await fetch("http://127.0.0.1:8000/api/products/", {
+  const res = await fetch("http://backend:8000/api/products/", {
     cache: "no-store",
   });
 
