@@ -1,0 +1,57 @@
+[
+{
+  "model": "products.product",
+  "pk": 1,
+  "fields": {
+    "name": "Смартфон Apple iPhone 17 Pro Max 256GB Silver",
+    "description": "Тип\tСмартфони\r\nБренд\tApple\r\nСерія\tApple iPhone 17 Pro Max\r\nТип екрану\tOLED (Super Retina XDR)\r\nДіагональ екрану\t6.9''\r\nРоздільна здатність екрану\t2868x1320\r\nЧастота оновлення екрану\t120 Гц\r\nПроцесор\tApple A19 Pro\r\nКількість ядер\t6\r\nГрафічний чип\tApple GPU (6-core)\r\nОб'єм оперативної пам'яті\t12ГБ\r\nОб'єм накопичувача\t256ГБ",
+    "price": "71899.00",
+    "image": "https://touch.com.ua/upload/resize_cache/iblock/466/500_500_1/4y66r6h871opmleuwvubgn43c4knfcbp.jpg",
+    "created_at": "2026-03-17T14:50:37.532Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "name": "Смартфон Apple iPhone 17 Pro 256GB Deep Blue",
+    "description": "Тип\tСмартфони\r\nБренд\tApple\r\nСерія\tApple iPhone 17 Pro\r\nТип екрану\tOLED (Super Retina XDR)\r\nДіагональ екрану\t6.3''\r\nРоздільна здатність екрану\t2622x1206\r\nЧастота оновлення екрану\t120 Гц\r\nПроцесор\tApple A19 Pro\r\nКількість ядер\t6\r\nГрафічний чип\tApple GPU (6-core)\r\nОб'єм оперативної пам'яті\t12ГБ\r\nОб'єм накопичувача\t256ГБ",
+    "price": "64739.00",
+    "image": "https://touch.com.ua/upload/resize_cache/iblock/9b1/500_500_1/qy5q7tiowuqt4n9xxrx43n0faoaj1u0y.jpg",
+    "created_at": "2026-03-17T14:51:41.225Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 3,
+  "fields": {
+    "name": "Смартфон Apple iPhone Air 256GB Space Black",
+    "description": "Тип\tСмартфони\r\nБренд\tApple\r\nСерія\tApple iPhone Air\r\nТип екрану\tOLED (Super Retina XDR)\r\nДіагональ екрану\t6.5''\r\nРоздільна здатність екрану\t2736x1260\r\nЧастота оновлення екрану\t120 Гц\r\nПроцесор\tApple A19 Pro\r\nКількість ядер\t6\r\nГрафічний чип\tApple GPU (5-core)\r\nОб'єм оперативної пам'яті\t12ГБ\r\nОб'єм накопичувача\t256ГБ",
+    "price": "48719.00",
+    "image": "https://touch.com.ua/upload/resize_cache/iblock/5a0/500_500_1/qu5cwksf222dve5idrvpi7y40qa9mk2k.jpg",
+    "created_at": "2026-03-17T14:52:15.587Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 4,
+  "fields": {
+    "name": "Смартфон Apple iPhone 17 256GB Lavender",
+    "description": "Тип\tСмартфони\r\nБренд\tApple\r\nСерія\tApple iPhone 17\r\nТип екрану\tOLED (Super Retina XDR)\r\nДіагональ екрану\t6.3''\r\nРоздільна здатність екрану\t2622x1206\r\nЧастота оновлення екрану\t120 Гц\r\nПроцесор\tApple A19\r\nКількість ядер\t6\r\nГрафічний чип\tApple GPU (5-core)\r\nОб'єм оперативної пам'яті\t8ГБ\r\nОб'єм накопичувача\t256ГБ",
+    "price": "44699.00",
+    "image": "https://touch.com.ua/upload/resize_cache/iblock/483/500_500_1/31cjrmcyuflgpaqk73un8nxxa7oi9tmm.jpg",
+    "created_at": "2026-03-17T14:53:05.068Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 5,
+  "fields": {
+    "name": "Смартфон Apple iPhone 17e 256GB eSim Soft Pink",
+    "description": "Тип\tСмартфони\r\nБренд\tApple\r\nСерія\tApple iPhone 17e\r\nТип екрану\tOLED (Super Retina XDR)\r\nДіагональ екрану\t6.1''\r\nРоздільна здатність екрану\t2532x1170\r\nЧастота оновлення екрану\t60 Гц\r\nПроцесор\tApple A19\r\nКількість ядер\t6\r\nГрафічний чип\tApple GPU (4-core)\r\nОб'єм оперативної пам'яті\t8ГБ\r\nОб'єм накопичувача\t256ГБ",
+    "price": "39049.00",
+    "image": "https://touch.com.ua/upload/resize_cache/iblock/dfa/500_500_1/d58edfwe1bsq4y9rlctaepiammgudwxk.jpg",
+    "created_at": "2026-03-17T14:53:47.722Z"
+  }
+}
+]
