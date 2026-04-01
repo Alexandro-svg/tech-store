@@ -18,10 +18,7 @@ type Product = {
 
 // 🔥 fetch с типом
 async function getProducts(): Promise<Product[]> {
-  const res = await fetch("http://backend:8000/api/products/", {
-    cache: "no-store",
-  });
-
+ const res = await fetch("http://backend:8000/api/products/", { cache: "no-store" });
   if (!res.ok) {
     console.log("API ERROR");
     return [];
@@ -77,15 +74,15 @@ export default async function Home() {
               
               <div className="h-40 relative mb-3">
                 <Image
-                  src={
-                    p.image.startsWith("http")
-                      ? p.image
-                      : `http://127.0.0.1:8000${p.image}`
-                  }
-                  alt={p.name}
-                  fill
-                  className="object-cover rounded-xl"
-                />
+  src={
+    p.image.startsWith("http") 
+      ? p.image // Если это полная ссылка на сторонний ресурс
+      : `http://localhost:8000${p.image}` // Если это путь от Django (например /media/...)
+  }
+  alt={p.name}
+  fill
+  className="object-cover rounded-xl"
+/>
               </div>
 
               <h2 className="text-xl">{p.name}</h2>

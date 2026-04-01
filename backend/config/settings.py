@@ -85,14 +85,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'my_project',
-        'USER': 'postgres',
+        'USER': 'eshop_user',          # Должно совпадать с compose
         'PASSWORD': 'MyNewPass123',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432',
-        
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
