@@ -47,7 +47,7 @@ export default async function Home() {
 
         <div className="flex justify-start gap-5">
           {products.map((p) => (
-            <Link key={p.id} href={`/product/${p.id}`} className="relative w-full max-w-60">
+            <Link key={p.id} href={`/product/${p.id}/`} className="relative w-full max-w-60">
               <Card className="w-full pt-0">
                 <div className="absolute inset-0 z-30" />
                 <img
