@@ -19,7 +19,6 @@ services:
     depends_on:
       - db
     environment:
-      # ИСПРАВЛЕНО: данные теперь совпадают с блоком db
       - DATABASE_URL=postgres://eshop_user:MyNewPass123@db:5432/my_project
 
   frontend:
@@ -29,9 +28,22 @@ services:
       - "3000:3000"
     depends_on:
       - backend
-    # ДОБАВЛЕНО: чтобы host.docker.internal точно работал в Windows
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    develop:
+      watch:
+        - path: ./frontend/app
+          action: sync
+          target: /app/app
+        - path: ./frontend/components
+          action: sync
+          target: /app/components
+        - path: ./frontend/public
+          action: sync
+          target: /app/public
+        - path: ./frontend/package.json
+          action: rebuild
+    working_dir: /app
 
 volumes:
   postgres_data:
