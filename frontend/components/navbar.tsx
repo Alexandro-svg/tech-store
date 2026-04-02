@@ -16,7 +16,7 @@ import Link from "next/link"
 
 export const Navbar = () => {
     return (
-        <div className="bg-background p-2 px-10 mb-7 flex justify-between sticky top-5 z-50">
+        <div className="bg-background p-7 px-10 flex justify-between sticky top-0 z-50">
             <div className="flex flex-1 gap-8">
                 {/* <h1 className="text-2xl text-white font-bold">TechByte</h1> */}
                 <Link href='/' className="flex gap-3 items-center justify-between">

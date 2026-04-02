@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", figtree.variable)}>
       <body
-        className="${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden bg-background m-5"
+        className="${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden bg-background mx-auto max-w-400"
       >
         <Navbar />
         <main className="">
