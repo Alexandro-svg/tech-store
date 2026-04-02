@@ -48,16 +48,16 @@
 }
 
 :root {
-  --background: #23201f;
-  --foreground: #f3e2df;
-  --card: #0b0a0a;
+  --background: #0b152a;
+  --foreground: #f3f8fa;
+  --card: #282929;
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: #cf4f4b;
   --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(59.304% 0.22335 25.587);
+  --destructive: oklch(41.657% 0.15047 24.981 / 0.775);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);

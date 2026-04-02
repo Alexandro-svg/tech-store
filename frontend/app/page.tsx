@@ -80,8 +80,8 @@ export default async function Home() {
 
         <div className="flex justify-start gap-5">
           {products.map((p) => (
-            <a href="/" className="relative w-full max-w-60 pt-0">
-              <Card className="relative w-full max-w-60 pt-0">
+            <a href="/" className="relative w-full max-w-60">
+              <Card className="w-full pt-0 hover:border">
                 <div className="absolute inset-0 z-30" />
                 <img
                   src={

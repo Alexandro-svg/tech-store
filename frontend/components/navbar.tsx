@@ -18,7 +18,11 @@ export const Navbar = () => {
     return (
         <div className="bg-background p-2 px-10 mb-7 flex justify-between sticky top-5 z-50">
             <div className="flex flex-1 gap-8">
-                <h1 className="text-2xl text-white font-bold">TechByte</h1>
+                {/* <h1 className="text-2xl text-white font-bold">TechByte</h1> */}
+                <Link href='/' className="flex gap-3 items-center justify-between">
+                    <img src="/logo_icon.png" alt="Logo Icon" className="w-10" />
+                    <img src="/logo_text.png" alt="Logo Icon" className="w-40" />
+                </Link>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="default" className="bg-accent w-30 font-bold tracking-wide">CATALOG</Button>
@@ -68,7 +72,7 @@ export const Navbar = () => {
                 </Link>
             </div>
             <div className="flex flex-1 justify-end">
-                <Button variant="outline" className="cursor-pointer text-primary">Profile</Button>
+                <Button variant="default" className="cursor-pointer text-primary">Profile</Button>
             </div>
         </div>
     )
