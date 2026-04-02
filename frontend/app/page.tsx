@@ -1,12 +1,5 @@
 import Image from "next/image";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
   Card,
   CardAction,
   CardContent,
@@ -17,6 +10,8 @@ import {
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { CarouselNewProducts } from "@/components/carousel-new-products";
+import Link from "next/link";
 
 // 🔥 тип продукта
 type Product = {
@@ -43,67 +38,33 @@ export default async function Home() {
   return (
     <div className="min-h-screen flex flex-col">
 
-      {/* КАРУСЕЛЬ */}
       <section>
-        <Carousel className="border-b border-t h-120 relative overflow-hidden">
-          <CarouselContent className="relative w-full h-120">
-            <CarouselItem className="flex justify-evenly items-center py-2 ">
-              <div>
-                <h1 className="text-8xl text-primary">MacBook Neo</h1>
-                <p className="text-4xl mb-5 text-primary">
-                  Amazing Mac. Surprising price.
-                </p>
-                <p className="text-xl mb-3.5 text-primary">
-                  Now available. Starting from $599 or $49.91/mo. per month for 12 mo.
-                </p>
-                <Button variant='default' size='lg' className="text-2xl p-5 px-10">Buy</Button>
-              </div>
-
-              <div className="h-110 relative aspect-video overflow-hidden rounded-4xl">
-                <Image
-                  alt="Front"
-                  fill
-                  className="object-cover"
-                  src="/media/products/macbook_neo/macbook-neo-color-unselect-202603-gallery-1.webp"
-                />
-              </div>
-            </CarouselItem>
-          </CarouselContent>
-          <CarouselPrevious className="ml-25 text-white" />
-          <CarouselNext className="mr-25 text-white" />
-        </Carousel>
+        <CarouselNewProducts />
       </section>
 
-      {/* 🔥 PRODUCTS */}
       <section className="p-10">
         <h1 className="text-3xl mb-5">Products</h1>
 
         <div className="flex justify-start gap-5">
           {products.map((p) => (
-            <a href="/" className="relative w-full max-w-60">
-              <Card className="w-full pt-0 hover:border">
+            <Link key={p.id} href={`/product/${p.id}/`} className="relative w-full max-w-60">
+              <Card className="w-full pt-0">
                 <div className="absolute inset-0 z-30" />
                 <img
                   src={
                     p.image.startsWith("http")
-                      ? p.image // Если это полная ссылка на сторонний ресурс
-                      : `http://localhost:8000${p.image}` // Если это путь от Django (например /media/...)
+                      ? p.image
+                      : `http://localhost:8000${p.image}`
                   }
                   alt={p.name}
                   className="relative z-20 w-full object-cover"
                 />
                 <CardHeader>
-                  {/* <CardAction>
-                  <Badge variant="secondary">Featured</Badge>
-                </CardAction> */}
                   <CardTitle>{p.name}</CardTitle>
-                  {/* <CardDescription>
-                  A practical talk on component APIs, accessibility, and shipping
-                  faster.
-                </CardDescription> */}
                 </CardHeader>
               </Card>
-            </a>
+            </Link>
+
             // <Card className="relative mx-auto w-full h-full max-w-sm pt-0">
             //   <div className="absolute inset-0 z-30 aspect-video">
             //     <Image
