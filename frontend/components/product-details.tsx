@@ -71,12 +71,17 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                                 onChange={(event, newValue) => {
                                     setValue(newValue);
                                 }}
+                                sx={{
+                                    '& .MuiRating-iconEmpty': {
+                                        color: 'color-mix(in srgb, var(--foreground), transparent 40%)', // Change 'white' to your desired outline color
+                                    },
+                                }}
                             />
                         </Box>
                         <div className="bg-background my-8 rounded-xl p-5">
                             <h2 className="text-3xl font-bold mb-4 tracking-wider">{product.price} грн</h2>
                             <div className="flex gap-2">
-                                <Button variant="default" className="bg-accent px-5 font-bold tracking-wide">Add to Cart</Button>
+                                <Button variant="default" className="bg-accent px-5 font-bold tracking-wide hover:bg-accent/80">Add to Cart</Button>
                                 <Button variant="secondary" className="px-5 font-bold tracking-wide">Trade In</Button>
                                 <Button variant="outline" className="px-5 tracking-wide">Split Pay</Button>
                             </div>
@@ -120,25 +125,25 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                                 <div className="">
                                     <h3 className="text-xl text-primary">Storage: <b>256GB</b>
                                         <RadioGroup defaultValue="r-1" className='mt-3 ml-2'>
-                                            <Label className="flex cursor-pointer items-start rounded-lg border p-3 hover:bg-accent/50 has-data-checked:border-card/48 has-data-checked:bg-accent">
+                                            <Label className="flex cursor-pointer items-start rounded-lg border-2 p-3 hover:bg-accent/50 has-data-checked:border-card/48 has-data-checked:bg-accent">
                                                 <CossRadio value="r-1" />
                                                 <div className="flex flex-col gap-1">
                                                     <p>256GB</p>
                                                 </div>
                                             </Label>
-                                            <Label className="flex cursor-pointer items-start rounded-lg border p-3 hover:bg-accent/50 has-data-checked:border-card/48 has-data-checked:bg-accent">
+                                            <Label className="flex cursor-pointer items-start rounded-lg border-2 p-3 hover:bg-accent/50 has-data-checked:border-card/48 has-data-checked:bg-accent">
                                                 <CossRadio value="r-2" />
                                                 <div className="flex flex-col gap-1">
                                                     <p>512GB</p>
                                                 </div>
                                             </Label>
-                                            <Label className="flex cursor-pointer items-start rounded-lg border p-3 hover:bg-accent/50 has-data-checked:border-card/48 has-data-checked:bg-accent">
+                                            <Label className="flex cursor-pointer items-start rounded-lg border-2 p-3 hover:bg-accent/50 has-data-checked:border-card/48 has-data-checked:bg-accent">
                                                 <CossRadio value="r-3" />
                                                 <div className="flex flex-col gap-1">
                                                     <p>1TB</p>
                                                 </div>
                                             </Label>
-                                            <Label className="flex cursor-pointer items-start rounded-lg border p-3 hover:bg-accent/50 has-data-checked:border-card/48 has-data-checked:bg-accent">
+                                            <Label className="flex cursor-pointer items-start rounded-lg border-2 p-3 hover:bg-accent/50 has-data-checked:border-card/48 has-data-checked:bg-accent">
                                                 <CossRadio value="r-4" />
                                                 <div className="flex flex-col gap-1">
                                                     <p>2TB</p>
