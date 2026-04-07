@@ -62,6 +62,7 @@ export default async function Home() {
                 <CardHeader>
                   <CardTitle>{p.name}</CardTitle>
                 </CardHeader>
+                <CardFooter>{p.price} грн</CardFooter>
               </Card>
             </Link>
 
