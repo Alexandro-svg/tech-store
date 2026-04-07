@@ -1,11 +1,11 @@
-"use client";
+// "use client";
 
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 // import 'react-photo-view/dist/react-photo-view.css';
-import { PhotoProvider, PhotoView } from 'react-photo-view';
+// import { PhotoProvider, PhotoView } from 'react-photo-view';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
@@ -36,18 +36,20 @@ export default async function ProductPage({
 }: {
     params: Promise<{ id: string }>
 }) {
-    // const { id } = await params;
+    const { id } = await params;
 
-    // const res = await fetch(`http://backend:8000/api/products/${id}/`, {
-    //     cache: 'no-store'
-    // });
+    console.log(params)
 
-    // if (!res.ok) {
-    //     return <div className="p-10 text-center">Product not found (Error {res.status})</div>;
-    // }
+    const res = await fetch(`http://backend:8000/api/products/${id}/`, {
+        cache: 'no-store'
+    });
 
-    // const product = await res.json();
-    // console.log(product)
+    if (!res.ok) {
+        return <div className="p-10 text-center">Product not found (Error {res.status})</div>;
+    }
+
+    const product = await res.json();
+    console.log(product)
 
     return (
         <div className="p-10 flex gap-10">
@@ -68,15 +70,15 @@ export default async function ProductPage({
                 </div>
                 <div className="flex justify-between gap-7">
                     <div className="bg-card flex-1 rounded-2xl relative min-h-200 overflow-hidden">
-                        <PhotoProvider>
+                        {/* <PhotoProvider>
                             <PhotoView src="/media/products/macbook_neo/macbook-neo-color-unselect-202603-gallery-1.webp">
                                 <img src="/media/products/macbook_neo/macbook-neo-color-unselect-202603-gallery-1.webp" alt="Product Image" />
                             </PhotoView>
-                        </PhotoProvider>
+                        </PhotoProvider> */}
                         {/* <Image alt="Product Image" fill src='/media/products/macbook_neo/macbook-neo-color-unselect-202603-gallery-1.webp' className="object-cover"></Image> */}
                     </div>
                     <div className="bg-card flex-1 rounded-2xl py-10 px-12">
-                        <h1 className="text-4xl font text-primary wrap-anywhere mb-2">MacBook Neo 13 Retina, Indigo, 256GB, 6 CPU / 5 GPU, 8GB RAM with Apple A18 Pro (2026)</h1>
+                        <h1 className="text-4xl font text-primary wrap-anywhere mb-2">{product.name}</h1>
                         {/* <Box sx={{ '& > legend': { mt: 2 } }}>
                             <Rating
                                 name="simple-controlled"
