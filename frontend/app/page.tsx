@@ -43,7 +43,7 @@ export default async function Home() {
       </section>
 
       <section className="p-10">
-        <h1 className="text-3xl mb-5">Products</h1>
+        <h1 className="text-3xl mb-5">Popular products</h1>
 
         <div className="flex justify-start gap-5">
           {products.map((p) => (
@@ -62,6 +62,7 @@ export default async function Home() {
                 <CardHeader>
                   <CardTitle>{p.name}</CardTitle>
                 </CardHeader>
+                <CardFooter className="text-xl font-bold tracking-wider">{p.price} грн</CardFooter>
               </Card>
             </Link>
 

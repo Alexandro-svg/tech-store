@@ -23,12 +23,13 @@ export const Navbar = () => {
                     <img src="/logo_icon.png" alt="Logo Icon" className="w-10" />
                     <img src="/logo_text.png" alt="Logo Icon" className="w-40" />
                 </Link>
-                <DropdownMenu>
+                <DropdownMenu modal={false}>
                     <DropdownMenuTrigger asChild>
                         <Button variant="default" className="bg-accent w-30 font-bold tracking-wide">CATALOG</Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="[&_*]:text-xl [&_*]:p-3 [&_*]:cursor-pointer">
                         <DropdownMenuGroup>
+                            <DropdownMenuItem>All</DropdownMenuItem>
                             <DropdownMenuItem>Sales</DropdownMenuItem>
                             <DropdownMenuSub>
                                 <DropdownMenuSubTrigger>Laptops</DropdownMenuSubTrigger>
@@ -72,7 +73,7 @@ export const Navbar = () => {
                 </Link>
             </div>
             <div className="flex flex-1 justify-end">
-                <Button variant="default" className="cursor-pointer text-primary">Profile</Button>
+                <Button variant="default" className="cursor-pointer text-primary px-5">Profile</Button>
             </div>
         </div>
     )
