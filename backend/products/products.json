@@ -1,57 +1,120 @@
 [
-  {
-    "model": "products.product",
-    "pk": 1,
-    "fields": {
-      "name": "Смартфон Apple iPhone 17 Pro Max 256GB Silver",
-      "description": "Тип: Смартфоны\r\nБренд: Apple\r\nСерия: Apple iPhone 17 Pro Max\r\nТип экрана: OLED (Super Retina XDR)\r\nДиагональ экрана: 6.9''\r\nРазрешение экрана: 2868x1320\r\nЧастота обновления экрана: 120 Гц\r\nПроцессор: Apple A19 Pro\r\nКоличество ядер: 6\r\nГрафический чип: Apple GPU (6-core)\r\nОбъем оперативной памяти: 12ГБ\r\nОбъем накопителя: 256ГБ",
-      "price": "71899.00",
-      "image": "https://touch.com.ua/upload/resize_cache/iblock/466/500_500_1/4y66r6h871opmleuwvubgn43c4knfcbp.jpg",
-      "created_at": "2026-03-17T14:50:37.532Z"
+    {
+        "id": 2,
+        "name": "Смартфон Apple iPhone 17 Pro 256GB Deep Blue",
+        "description": "Тип: Смартфоны\r\nБренд: Apple\r\nСерия: Apple iPhone 17 Pro\r\nТип экрана: OLED (Super Retina XDR)\r\nДиагональ экрана: 6.3''\r\nРазрешение экрана: 2622x1206\r\nЧастота обновления экрана: 120 Гц\r\nПроцессор: Apple A19 Pro\r\nКоличество ядер: 6\r\nГрафический чип: Apple GPU (6-core)\r\nОбъем оперативной памяти: 12ГБ\r\nОбъем накопителя: 256ГБ",
+        "price": 0,
+        "image": null,
+        "variants": [],
+        "created_at": "2026-03-17T14:51:41.225000Z"
+    },
+    {
+        "id": 3,
+        "name": "Смартфон Apple iPhone Air 256GB Space Black",
+        "description": "Тип: Смартфоны\r\nБренд: Apple\r\nСерия: Apple iPhone Air\r\nТип экрана: OLED (Super Retina XDR)\r\nДиагональ экрана: 6.5''\r\nРазрешение экрана: 2736x1260\r\nЧастота обновления экрана: 120 Гц\r\nПроцессор: Apple A19 Pro\r\nКоличество ядер: 6\r\nГрафический чип: Apple GPU (5-core)\r\nОбъем оперативной памяти: 12ГБ\r\nОбъем накопителя: 256ГБ",
+        "price": 0,
+        "image": null,
+        "variants": [],
+        "created_at": "2026-03-17T14:52:15.587000Z"
+    },
+    {
+        "id": 4,
+        "name": "Смартфон Apple iPhone 17 256GB Lavender",
+        "description": "Тип: Смартфоны\r\nБренд: Apple\r\nСерия: Apple iPhone 17\r\nТип экрана: OLED (Super Retina XDR)\r\nДиагональ экрана: 6.3''\r\nРазрешение экрана: 2622x1206\r\nЧастота обновления экрана: 120 Гц\r\nПроцессор: Apple A19\r\nКоличество ядер: 6\r\nГрафический чип: Apple GPU (5-core)\r\nОбъем оперативной памяти: 8ГБ\r\nОбъем накопителя: 256ГБ",
+        "price": 0,
+        "image": null,
+        "variants": [],
+        "created_at": "2026-03-17T14:53:05.068000Z"
+    },
+    {
+        "id": 5,
+        "name": "Смартфон Apple iPhone 17e 256GB eSim Soft Pink",
+        "description": "Тип: Смартфоны\r\nБренд: Apple\r\nСерия: Apple iPhone 17e\r\nТип экрана: OLED (Super Retina XDR)\r\nДиагональ экрана: 6.1''\r\nРазрешение экрана: 2532x1170\r\nЧастота обновления экрана: 60 Гц\r\nПроцессор: Apple A19\r\nКоличество ядер: 6\r\nГрафический чип: Apple GPU (4-core)\r\nОбъем оперативной памяти: 8ГБ\r\nОбъем накопителя: 256ГБ",
+        "price": 0,
+        "image": null,
+        "variants": [],
+        "created_at": "2026-03-17T14:53:47.722000Z"
+    },
+    {
+        "id": 1,
+        "name": "Смартфон Apple iPhone 17 Pro Max",
+        "description": "Тип: Смартфоны\r\nБренд: Apple\r\nСерия: Apple iPhone 17 Pro Max\r\nТип экрана: OLED (Super Retina XDR)\r\nДиагональ экрана: 6.9''\r\nРазрешение экрана: 2868x1320\r\nЧастота обновления экрана: 120 Гц\r\nПроцессор: Apple A19 Pro\r\nКоличество ядер: 6\r\nГрафический чип: Apple GPU (6-core)\r\nОбъем оперативной памяти: 12ГБ\r\nОбъем накопителя: 256ГБ, 512ГБ, 1Т",
+        "price": 66999.0,
+        "image": "https://touch.com.ua/upload/iblock/450/drwlzczdfec5uidx3k5v6uxwn72mabcr.jpg",
+        "variants": [
+            {
+                "id": 1,
+                "color": "Deep Blue",
+                "storage": "256",
+                "price": "66999.00",
+                "image": "https://touch.com.ua/upload/iblock/450/drwlzczdfec5uidx3k5v6uxwn72mabcr.jpg",
+                "stock": 50
+            },
+            {
+                "id": 2,
+                "color": "Cosmic Orange",
+                "storage": "256",
+                "price": "67189.00",
+                "image": "https://touch.com.ua/upload/resize_cache/iblock/56c/500_500_1/vl5mqz42wpu2nmau8rqrcc9z8oeli953.jpg",
+                "stock": 50
+            },
+            {
+                "id": 3,
+                "color": "Silver",
+                "storage": "256",
+                "price": "68039.00",
+                "image": "https://touch.com.ua/upload/resize_cache/iblock/466/500_500_1/4y66r6h871opmleuwvubgn43c4knfcbp.jpg",
+                "stock": 50
+            },
+            {
+                "id": 4,
+                "color": "Deep Blue",
+                "storage": "512",
+                "price": "77149.00",
+                "image": "https://touch.com.ua/upload/iblock/450/drwlzczdfec5uidx3k5v6uxwn72mabcr.jpg",
+                "stock": 50
+            },
+            {
+                "id": 5,
+                "color": "Cosmic Orange",
+                "storage": "512",
+                "price": "77149.00",
+                "image": "https://touch.com.ua/upload/resize_cache/iblock/56c/500_500_1/vl5mqz42wpu2nmau8rqrcc9z8oeli953.jpg",
+                "stock": 50
+            },
+            {
+                "id": 6,
+                "color": "Silver",
+                "storage": "512",
+                "price": "81629.00",
+                "image": "https://touch.com.ua/upload/resize_cache/iblock/466/500_500_1/4y66r6h871opmleuwvubgn43c4knfcbp.jpg",
+                "stock": 50
+            },
+            {
+                "id": 7,
+                "color": "Deep Blue",
+                "storage": "1",
+                "price": "92079.00",
+                "image": "https://touch.com.ua/upload/iblock/450/drwlzczdfec5uidx3k5v6uxwn72mabcr.jpg",
+                "stock": 50
+            },
+            {
+                "id": 8,
+                "color": "Cosmic Orange",
+                "storage": "1",
+                "price": "89389.00",
+                "image": "https://touch.com.ua/upload/resize_cache/iblock/56c/500_500_1/vl5mqz42wpu2nmau8rqrcc9z8oeli953.jpg",
+                "stock": 50
+            },
+            {
+                "id": 9,
+                "color": "Silver",
+                "storage": "1",
+                "price": "95069.00",
+                "image": "https://touch.com.ua/upload/resize_cache/iblock/466/500_500_1/4y66r6h871opmleuwvubgn43c4knfcbp.jpg",
+                "stock": 50
+            }
+        ],
+        "created_at": "2026-03-17T14:50:37.532000Z"
     }
-  },
-  {
-    "model": "products.product",
-    "pk": 2,
-    "fields": {
-      "name": "Смартфон Apple iPhone 17 Pro 256GB Deep Blue",
-      "description": "Тип: Смартфоны\r\nБренд: Apple\r\nСерия: Apple iPhone 17 Pro\r\nТип экрана: OLED (Super Retina XDR)\r\nДиагональ экрана: 6.3''\r\nРазрешение экрана: 2622x1206\r\nЧастота обновления экрана: 120 Гц\r\nПроцессор: Apple A19 Pro\r\nКоличество ядер: 6\r\nГрафический чип: Apple GPU (6-core)\r\nОбъем оперативной памяти: 12ГБ\r\nОбъем накопителя: 256ГБ",
-      "price": "64739.00",
-      "image": "https://touch.com.ua/upload/resize_cache/iblock/9b1/500_500_1/qy5q7tiowuqt4n9xxrx43n0faoaj1u0y.jpg",
-      "created_at": "2026-03-17T14:51:41.225Z"
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": 3,
-    "fields": {
-      "name": "Смартфон Apple iPhone Air 256GB Space Black",
-      "description": "Тип: Смартфоны\r\nБренд: Apple\r\nСерия: Apple iPhone Air\r\nТип экрана: OLED (Super Retina XDR)\r\nДиагональ экрана: 6.5''\r\nРазрешение экрана: 2736x1260\r\nЧастота обновления экрана: 120 Гц\r\nПроцессор: Apple A19 Pro\r\nКоличество ядер: 6\r\nГрафический чип: Apple GPU (5-core)\r\nОбъем оперативной памяти: 12ГБ\r\nОбъем накопителя: 256ГБ",
-      "price": "48719.00",
-      "image": "https://touch.com.ua/upload/resize_cache/iblock/5a0/500_500_1/qu5cwksf222dve5idrvpi7y40qa9mk2k.jpg",
-      "created_at": "2026-03-17T14:52:15.587Z"
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": 4,
-    "fields": {
-      "name": "Смартфон Apple iPhone 17 256GB Lavender",
-      "description": "Тип: Смартфоны\r\nБренд: Apple\r\nСерия: Apple iPhone 17\r\nТип экрана: OLED (Super Retina XDR)\r\nДиагональ экрана: 6.3''\r\nРазрешение экрана: 2622x1206\r\nЧастота обновления экрана: 120 Гц\r\nПроцессор: Apple A19\r\nКоличество ядер: 6\r\nГрафический чип: Apple GPU (5-core)\r\nОбъем оперативной памяти: 8ГБ\r\nОбъем накопителя: 256ГБ",
-      "price": "44699.00",
-      "image": "https://touch.com.ua/upload/resize_cache/iblock/483/500_500_1/31cjrmcyuflgpaqk73un8nxxa7oi9tmm.jpg",
-      "created_at": "2026-03-17T14:53:05.068Z"
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": 5,
-    "fields": {
-      "name": "Смартфон Apple iPhone 17e 256GB eSim Soft Pink",
-      "description": "Тип: Смартфоны\r\nБренд: Apple\r\nСерия: Apple iPhone 17e\r\nТип экрана: OLED (Super Retina XDR)\r\nДиагональ экрана: 6.1''\r\nРазрешение экрана: 2532x1170\r\nЧастота обновления экрана: 60 Гц\r\nПроцессор: Apple A19\r\nКоличество ядер: 6\r\nГрафический чип: Apple GPU (4-core)\r\nОбъем оперативной памяти: 8ГБ\r\nОбъем накопителя: 256ГБ",
-      "price": "39049.00",
-      "image": "https://touch.com.ua/upload/resize_cache/iblock/dfa/500_500_1/d58edfwe1bsq4y9rlctaepiammgudwxk.jpg",
-      "created_at": "2026-03-17T14:53:47.722Z"
-    }
-  }
 ]

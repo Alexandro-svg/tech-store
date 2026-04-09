@@ -52,7 +52,7 @@ export default async function Home() {
                 <div className="absolute inset-0 z-30" />
                 <img
                   src={
-                    p.image.startsWith("http")
+                    (p.image && p.image.startsWith("http"))
                       ? p.image
                       : `http://localhost:8000${p.image}`
                   }
