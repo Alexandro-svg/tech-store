@@ -46,9 +46,9 @@ export default async function ProductPage({
     if (!res.ok) {
         return <div className="p-10 text-center">Product not found (Error {res.status})</div>;
     }
-    const product = await res.json();
+    const p = await res.json();
 
     return (
-        <ProductDetails product={product} />
+        <ProductDetails p={p} />
     );
 }

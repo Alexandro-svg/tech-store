@@ -15,10 +15,16 @@ import { Label } from "@/components/ui/label";
 import { Radio as CossRadio, RadioGroup } from "@/components/ui/radio-group";
 
 interface ProductDetailsProps {
-    product: any;
+    p: any;
+    id: number;
+    color: string;
+    storage: string;
+    price: string;
+    image: string;
+    stock: number;
 }
 
-export function ProductDetails({ product }: ProductDetailsProps) {
+export function ProductDetails({ p }: ProductDetailsProps) {
     const [value, setValue] = React.useState<number | null>(4);
 
     const [selectedValue, setSelectedValue] = React.useState('a');
@@ -34,6 +40,22 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         name: 'color-radio-button',
         inputProps: { 'aria-label': item },
     });
+
+    const [selectedColor, setSelectedColor] = React.useState(p.variants[0].color);
+    const [selectedStorage, setSelectedStorage] = React.useState(p.variants[0].storage);
+
+    const activeVariant = p.variants.find(
+        (v: any) => v.color === selectedColor && v.storage === selectedStorage
+    ) || p.variants[0];
+
+    const uniqueColors = [...new Set(p.variants.map((v: any) => v.color))];
+    const uniqueStorage = [...new Set(p.variants.map((v: any) => v.storage))];
+
+    const colorHexMap: Record<string, string> = {
+        "Silver": "#e6e6e6",
+        "Cosmic Orange": "#f77e39",
+        "Deep Blue": "#434f7b",
+    };
 
     return (
         <div className="p-10">
@@ -55,14 +77,14 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                 <div className="flex justify-between gap-7">
                     <div className="bg-card rounded-2xl relative p-4 min-h-200 max-w-150 w-full overflow-hidden">
                         <PhotoProvider className="flex">
-                            <PhotoView src={product.image}>
-                                <img src={product.image} className="rounded-xl w-full m-auto cursor-pointer" alt={product.name} />
+                            <PhotoView src={activeVariant.image}>
+                                <img src={activeVariant.image} className="rounded-xl w-full m-auto cursor-pointer" alt={p.name} />
                             </PhotoView>
                         </PhotoProvider>
                         {/* <Image alt="Product Image" fill src='/media/products/macbook_neo/macbook-neo-color-unselect-202603-gallery-1.webp' className="object-cover"></Image> */}
                     </div>
                     <div className="bg-card flex-2 rounded-2xl py-10 px-12">
-                        <h1 className="text-4xl font text-primary wrap-anywhere mb-4">{product.name}</h1>
+                        <h1 className="text-4xl font text-primary wrap-anywhere mb-4">{p.name}</h1>
                         <Box sx={{ '& > legend': { mt: 2 } }}>
                             {/* <Typography component="legend">Controlled</Typography> */}
                             <Rating
@@ -73,13 +95,16 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                                 }}
                                 sx={{
                                     '& .MuiRating-iconEmpty': {
-                                        color: 'color-mix(in srgb, var(--foreground), transparent 40%)', // Change 'white' to your desired outline color
+                                        color: 'color-mix(in srgb, var(--foreground), transparent 40%)',
                                     },
                                 }}
                             />
                         </Box>
                         <div className="bg-background my-8 rounded-xl p-5">
-                            <h2 className="text-3xl font-bold mb-4 tracking-wider">{product.price} грн</h2>
+                            <div className="flex justify-between">
+                                <h2 className="text-3xl font-bold mb-4 tracking-wider">{activeVariant.price} грн</h2>
+                                <p className="text-foreground/60"><b className="text-foreground/90">{activeVariant.stock}</b> in stock</p>
+                            </div>
                             <div className="flex gap-2">
                                 <Button variant="default" className="bg-accent px-5 font-bold tracking-wide hover:bg-accent/80">Add to Cart</Button>
                                 <Button variant="secondary" className="px-5 font-bold tracking-wide">Trade In</Button>
@@ -90,65 +115,56 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                             <div className="mb-7">
                                 <h2 className="text-3xl text-primary font-semibold mb-5">Specs</h2>
                                 <div className="mb-3">
-                                    <h3 className="text-xl text-primary">Color: <b>Silver</b>
-                                        <div>
-                                            <Radio
-                                                {...controlProps('a')}
-                                                sx={{
-                                                    color: '#e6e6e6',
-                                                    '&.Mui-checked': {
-                                                        color: '#e6e6e6',
-                                                    },
-                                                }}
-                                            />
-                                            <Radio
-                                                {...controlProps('b')}
-                                                sx={{
-                                                    color: '#f77e39',
-                                                    '&.Mui-checked': {
-                                                        color: '#f77e39',
-                                                    },
-                                                }}
-                                            />
-                                            <Radio
-                                                {...controlProps('c')}
-                                                sx={{
-                                                    color: '#434f7b',
-                                                    '&.Mui-checked': {
-                                                        color: '#434f7b',
-                                                    },
-                                                }}
-                                            />
+                                    <h3 className="text-xl text-primary">Color: <b>{selectedColor}</b>
+                                        <div className="flex items-center">
+                                            {uniqueColors.map((colorName) => {
+                                                const hex = colorHexMap[colorName as string] || "#ccc";
+                                                return (
+                                                    <Radio
+                                                        key={colorName as string}
+                                                        checked={selectedColor === colorName}
+                                                        onChange={() => setSelectedColor(colorName as string)}
+                                                        value={colorName}
+                                                        name="color-radio-button"
+                                                        sx={{
+                                                            color: hex,
+                                                            '&.Mui-checked': {
+                                                                color: hex,
+                                                            },
+                                                            '& .MuiSvgIcon-root': {
+                                                                fontSize: 32,
+                                                            },
+                                                        }}
+                                                    />
+                                                );
+                                            })}
                                         </div>
                                     </h3>
                                 </div>
                                 <div className="">
-                                    <h3 className="text-xl text-primary">Storage: <b>256GB</b>
-                                        <RadioGroup defaultValue="r-1" className='mt-3 ml-2'>
-                                            <Label className="flex cursor-pointer items-start rounded-lg border-2 p-3 hover:bg-accent/50 has-data-checked:border-card/48 has-data-checked:bg-accent">
-                                                <CossRadio value="r-1" />
-                                                <div className="flex flex-col gap-1">
-                                                    <p>256GB</p>
-                                                </div>
-                                            </Label>
-                                            <Label className="flex cursor-pointer items-start rounded-lg border-2 p-3 hover:bg-accent/50 has-data-checked:border-card/48 has-data-checked:bg-accent">
-                                                <CossRadio value="r-2" />
-                                                <div className="flex flex-col gap-1">
-                                                    <p>512GB</p>
-                                                </div>
-                                            </Label>
-                                            <Label className="flex cursor-pointer items-start rounded-lg border-2 p-3 hover:bg-accent/50 has-data-checked:border-card/48 has-data-checked:bg-accent">
-                                                <CossRadio value="r-3" />
-                                                <div className="flex flex-col gap-1">
-                                                    <p>1TB</p>
-                                                </div>
-                                            </Label>
-                                            <Label className="flex cursor-pointer items-start rounded-lg border-2 p-3 hover:bg-accent/50 has-data-checked:border-card/48 has-data-checked:bg-accent">
-                                                <CossRadio value="r-4" />
-                                                <div className="flex flex-col gap-1">
-                                                    <p>2TB</p>
-                                                </div>
-                                            </Label>
+                                    <h3 className="text-xl text-primary">Storage: <b>{selectedStorage.length > 1 ? `${selectedStorage}GB` : `${selectedStorage}TB`}</b>
+                                        <RadioGroup
+                                            value={selectedStorage}
+                                            onValueChange={(val) => setSelectedStorage(val)}
+                                            className="mt-3 ml-2"
+                                        >
+                                            {uniqueStorage.map((size) => (
+                                                <Label
+                                                    key={size as string}
+                                                    className={`flex cursor-pointer items-center gap-2 rounded-lg border-2 p-3 transition-all hover:bg-accent/50 ${selectedStorage === size
+                                                        ? "border-accent bg-accent"
+                                                        : ""
+                                                        }`}
+                                                >
+                                                    <CossRadio value={size as string} id={`size-${size}`} />
+                                                    <div className="flex flex-col gap-1">
+                                                        <p className="font-medium">
+                                                            {/* Logic to display GB for 256/512 and TB for 1/2 */}
+                                                            {(size as string).length > 1 ? `${size}GB` : `${size}TB`}
+                                                        </p>
+                                                    </div>
+                                                </Label>
+                                            ))}
                                         </RadioGroup>
                                     </h3>
                                 </div>
@@ -156,7 +172,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                             <div className="">
                                 <h2 className="text-3xl text-primary font-semibold mb-5">Description</h2>
                                 {/* <p>{product.description}</p> */}
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi ea, assumenda temporibus optio at cum quae quo quis repellat iusto quasi impedit rem? Culpa facere eaque libero praesentium? Laboriosam, perspiciatis!</p>
+                                <p>{p.description}</p>
                             </div>
                         </div>
                     </div>
