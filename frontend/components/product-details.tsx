@@ -75,7 +75,6 @@ export function ProductDetails({ p }: ProductDetailsProps) {
                                 <img src={activeVariant.image} className="rounded-xl w-full m-auto cursor-pointer" alt={p.name} />
                             </PhotoView>
                         </PhotoProvider>
-                        {/* <Image alt="Product Image" fill src='/media/products/macbook_neo/macbook-neo-color-unselect-202603-gallery-1.webp' className="object-cover"></Image> */}
                     </div>
                     <div className="bg-card flex-2 rounded-2xl py-10 px-12">
                         <h1 className="text-4xl font text-primary wrap-anywhere mb-4">{p.name}</h1>

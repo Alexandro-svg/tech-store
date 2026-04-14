@@ -57,7 +57,7 @@ export const Navbar = () => {
                     </DropdownMenuContent>
                 </DropdownMenu>
             </div>
-            
+
             <div className="flex flex-1 justify-center [&_*]:text-primary [&_*]:cursor-pointer">
                 <Link href="/">
                     <Button variant="link">Home</Button>
@@ -73,7 +73,9 @@ export const Navbar = () => {
                 </Link>
             </div>
             <div className="flex flex-1 justify-end">
-                <Button variant="default" className="cursor-pointer text-primary px-5">Profile</Button>
+                <Link href='/profile'>
+                    <Button variant="default" className="cursor-pointer text-primary px-5">Profile</Button>
+                </Link>
             </div>
         </div>
     )
