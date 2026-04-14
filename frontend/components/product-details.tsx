@@ -16,12 +16,6 @@ import { Radio as CossRadio, RadioGroup } from "@/components/ui/radio-group";
 
 interface ProductDetailsProps {
     p: any;
-    id: number;
-    color: string;
-    storage: string;
-    price: string;
-    image: string;
-    stock: number;
 }
 
 export function ProductDetails({ p }: ProductDetailsProps) {
@@ -171,27 +165,12 @@ export function ProductDetails({ p }: ProductDetailsProps) {
                             </div>
                             <div className="">
                                 <h2 className="text-3xl text-primary font-semibold mb-5">Description</h2>
-                                {/* <p>{product.description}</p> */}
                                 <p>{p.description}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
-            {/* <img
-                src={product.image?.startsWith('http')
-                    ? product.image
-                    : `http://localhost:8000${product.image}`
-                }
-                alt={product.name}
-                className="w-1/2 rounded-xl"
-            />
-            <div>
-                <h1 className="text-4xl font-bold">{product.name}</h1>
-                <p className="text-2xl text-green-600 mt-4">${product.price}</p>
-                <p className="mt-6 text-gray-600 leading-relaxed">{product.description}</p>
-            </div> */}
         </div>
     )
 }
