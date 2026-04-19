@@ -5,7 +5,7 @@ from .serializers import UserSerializer
 class UserMeView(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     def get_object(self):
         return self.request.user
