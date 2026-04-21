@@ -1,12 +1,15 @@
 from django.contrib import admin
-from .models import Product, ProductVariant
+from .models import Product, ProductVariant, Order, OrderItem 
 
-# Эта штука выведет варианты (память/цвет) прямо внутри карточки товара
 class ProductVariantInline(admin.TabularInline):
     model = ProductVariant
-    extra = 2  # сколько пустых строк показать сразу
+    extra = 2
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductVariantInline]
     list_display = ('name', 'created_at')
+
+
+admin.site.register(Order)
+admin.site.register(OrderItem)
