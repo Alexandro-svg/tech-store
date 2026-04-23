@@ -2,8 +2,23 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardAction, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+    Field,
+    FieldDescription,
+    FieldError,
+    FieldLabel,
+} from "@/components/ui/field";
+import {
+    Select,
+    SelectItem,
+    SelectPopup,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -55,35 +70,28 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-slate-50 p-4">
+        <div className="flex justify-center items-center min-h-screen">
             <Card className="w-full max-w-md shadow-md">
                 <CardHeader>
-                    <CardTitle className="text-2xl font-bold text-center">Login</CardTitle>
+                    <CardTitle className="text-2xl font-bold">Log In</CardTitle>
                 </CardHeader>
-                <form onSubmit={handleLogin}>
-                    <CardContent className="space-y-4">
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Username</label>
-                            <input
-                                name="username"
-                                type="text"
-                                required
-                                value={formData.username}
-                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:ring-2 focus:ring-primary outline-none"
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Password</label>
-                            <input
-                                name="password"
-                                type="password"
-                                required
-                                value={formData.password}
-                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:ring-2 focus:ring-primary outline-none"
-                                onChange={handleChange}
-                            />
-                        </div>
+
+                <Form onSubmit={handleLogin} className="w-full">
+                    <CardContent className="space-y-4 mb-10">
+                        <Field name="username" className='col-span-2'>
+                            <FieldLabel>
+                                Username <span className="text-destructive">*</span>
+                            </FieldLabel>
+                            <Input value={formData.username} placeholder="john _doe" required type="text" onChange={handleChange} />
+                        </Field>
+
+                        <Field name="password" className='row-start-3'>
+                            <FieldLabel>
+                                Password <span className="text-destructive">*</span>
+                            </FieldLabel>
+                            <Input placeholder="Create a password" required type="password" value={formData.password} onChange={handleChange} />
+                            {/* <FieldError>Please enter a valid email.</FieldError> */}
+                        </Field>
 
                         {error && (
                             <div className="p-3 rounded-md text-sm bg-red-100 text-red-700">
@@ -94,16 +102,16 @@ export default function LoginPage() {
                     <CardFooter className="flex flex-col gap-3">
                         <Button
                             type="submit"
-                            className="w-full"
+                            className="w-full bg-accent hover:bg-foreground/30"
                             disabled={isLoading}
                         >
                             {isLoading ? "Authenticating..." : "Login"}
                         </Button>
-                        <p className="text-xs text-center text-slate-500">
-                            Don't have an account? <a href="/register" className="text-primary hover:underline">Sign Up</a>
+                        <p className="text-center text-slate-500">
+                            Don't have an account? <a href="/registration" className="text-primary hover:underline">Sign Up</a>
                         </p>
                     </CardFooter>
-                </form>
+                </Form>
             </Card>
         </div>
     );

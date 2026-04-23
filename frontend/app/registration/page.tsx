@@ -37,7 +37,6 @@ export default function RegisterPage() {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        console.log(formData)
     };
 
     const passwordConfirmation = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,6 +61,7 @@ export default function RegisterPage() {
 
             if (response.ok) {
                 // After successful registration, send user to login
+                console.log('sent')
                 router.push("/login");
             } else {
                 const data = await response.json();
@@ -79,18 +79,18 @@ export default function RegisterPage() {
             <Card className="w-full max-w-lg shadow-md">
                 <CardHeader>
                     <CardTitle className="text-2xl font-bold">Create Account</CardTitle>
-                    <CardAction>
-                        <Button variant="link">Log In</Button>
-                    </CardAction>
+                    {/* <CardAction>
+                        <Button variant="link" className="text-foreground/70">Log In</Button>
+                    </CardAction> */}
                 </CardHeader>
                 {/* <form onSubmit={handleRegister}> */}
                 <CardContent className="">
-                    <Form onSubmit={handleRegister} className="w-full grid grid-cols-2 grid-rows-6 gap-3">
+                    <Form onSubmit={handleRegister} className="w-full grid grid-cols-2 grid-rows-7 gap-2">
                         <Field name="username" className='col-span-2'>
                             <FieldLabel>
                                 Username <span className="text-destructive">*</span>
                             </FieldLabel>
-                            <Input placeholder="john _doe" required type="text" onChange={handleChange} />
+                            <Input placeholder="john_doe" required type="text" value={formData.username} onChange={handleChange} />
                             <FieldError>Please enter a valid name.</FieldError>
                         </Field>
 
@@ -98,7 +98,7 @@ export default function RegisterPage() {
                             <FieldLabel>
                                 Email <span className="text-destructive">*</span>
                             </FieldLabel>
-                            <Input placeholder="john@example.com" required type="email" onChange={handleChange} />
+                            <Input placeholder="john@example.com" required type="email" value={formData.email} onChange={handleChange} />
                             <FieldError>Please enter a valid email.</FieldError>
                         </Field>
 
@@ -106,7 +106,7 @@ export default function RegisterPage() {
                             <FieldLabel>
                                 Password <span className="text-destructive">*</span>
                             </FieldLabel>
-                            <Input placeholder="Create a password" required type="password" onChange={handleChange} />
+                            <Input placeholder="Create a password" required type="password" value={formData.password} onChange={handleChange} />
                             {/* <FieldError>Please enter a valid email.</FieldError> */}
                         </Field>
 
@@ -123,7 +123,7 @@ export default function RegisterPage() {
                             <FieldLabel>
                                 First Name <span className="text-foreground/70">(Optional)</span>
                             </FieldLabel>
-                            <Input placeholder="John" type="text" onChange={handleChange} />
+                            <Input placeholder="John" type="text" value={formData.first_name} onChange={handleChange} />
                             {/* <FieldError>Please enter a valid email.</FieldError> */}
                         </Field>
 
@@ -131,7 +131,7 @@ export default function RegisterPage() {
                             <FieldLabel>
                                 Last Name <span className="text-foreground/70">(Optional)</span>
                             </FieldLabel>
-                            <Input placeholder="Doe" type="text" onChange={handleChange} />
+                            <Input placeholder="Doe" type="text" value={formData.last_name} onChange={handleChange} />
                             {/* <FieldError>Please enter a valid email.</FieldError> */}
                         </Field>
 
@@ -139,7 +139,7 @@ export default function RegisterPage() {
                             <FieldLabel>
                                 Phone <span className="text-foreground/70">(Optional)</span>
                             </FieldLabel>
-                            <Input placeholder="+1 (555) 123-4567" type='tel' onChange={handleChange} />
+                            <Input placeholder="+1 (555) 123-4567" type='tel' value={formData.phone} onChange={handleChange} />
                             {/* <FieldError>Please enter a valid email.</FieldError> */}
                         </Field>
 
@@ -147,16 +147,16 @@ export default function RegisterPage() {
                             <FieldLabel>
                                 Address <span className="text-foreground/70">(Optional)</span>
                             </FieldLabel>
-                            <Input placeholder="123 Main St" type='text' onChange={handleChange} />
+                            <Input placeholder="123 Main St" type='text' value={formData.address} onChange={handleChange} />
                             {/* <FieldError>Please enter a valid email.</FieldError> */}
                         </Field>
+                        <Button type="submit" className="w-full col-span-2 row-start-7 bg-accent hover:bg-foreground/30" variant='default' disabled={isLoading}>
+                            {isLoading ? "Creating Account..." : "Register"}
+                        </Button>
+                        {error && <div className="col-span-2 p-3 rounded-md text-sm bg-red-100 text-red-700">{error}</div>}
                     </Form>
-                    {error && <div className="col-span-2 p-3 rounded-md text-sm bg-red-100 text-red-700">{error}</div>}
                 </CardContent>
                 <CardFooter className="flex flex-col gap-3">
-                    <Button type="submit" className="w-full bg-accent hover:bg-foreground/30" variant='default' disabled={isLoading}>
-                        {isLoading ? "Creating Account..." : "Register"}
-                    </Button>
                     <p className="text-center text-slate-500">
                         Already have an account? <a href="/login" className="text-primary hover:underline">Log In</a>
                     </p>

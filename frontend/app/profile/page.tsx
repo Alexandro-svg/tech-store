@@ -6,6 +6,7 @@ import { HouseIcon, PanelsTopLeftIcon, SettingsIcon } from "lucide-react";
 import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { EditProfilePopup } from "@/components/edit-profile";
 
 type User = {
     id: number;
@@ -29,6 +30,14 @@ export default function SupportPage() {
     const [user, setUser] = useState<User | null>(null);
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
+    const [isEditOpen, setIsEditOpen] = useState(false);
+
+    const handleLogout = () => {
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("refresh_token");
+
+        router.push("/login");
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -111,6 +120,10 @@ export default function SupportPage() {
 
     return (
         <div className="p-10">
+            {isEditOpen && (
+                <EditProfilePopup onClose={() => setIsEditOpen(false)} />
+            )}
+
             <Tabs
                 className="w-full flex-row"
                 defaultValue="tab-1"
@@ -197,7 +210,8 @@ export default function SupportPage() {
                                         </div>
                                     </div>
                                 </div>
-                                <Button variant="default" className="bg-foreground/10 cursor-pointer text-primary px-6">Edit Profile</Button>
+                                <Button variant="default" className="bg-accent cursor-pointer text-primary px-6 mr-6" onClick={() => setIsEditOpen(true)}>Edit Profile</Button>
+                                <Button variant="link" className="cursor-pointer text-foreground/70" onClick={handleLogout}>Log Out</Button>
                             </div>
                         </Card>
                         <Card className="row-start-2 py-6 px-8">
