@@ -121,7 +121,11 @@ export default function SupportPage() {
     return (
         <div className="p-10">
             {isEditOpen && (
-                <EditProfilePopup onClose={() => setIsEditOpen(false)} />
+                <EditProfilePopup
+                    currentUser={user}
+                    onClose={() => setIsEditOpen(false)}
+                    onUpdateSuccess={(updatedUser) => setUser(updatedUser)}
+                />
             )}
 
             <Tabs

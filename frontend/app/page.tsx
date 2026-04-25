@@ -62,7 +62,7 @@ export default async function Home() {
                 <CardHeader>
                   <CardTitle>{p.name}</CardTitle>
                 </CardHeader>
-                <CardFooter className="text-xl font-bold tracking-wider">{p.price} грн</CardFooter>
+                <CardFooter className="text-xl font-bold tracking-wider">&#36;{p.price}</CardFooter>
               </Card>
             </Link>
 

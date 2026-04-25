@@ -68,7 +68,6 @@ export default function RegisterPage() {
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // --- FIX 1: Run validation before submitting ---
         if (!validate()) return;
 
         setIsLoading(true);
@@ -88,7 +87,6 @@ export default function RegisterPage() {
             if (response.ok) {
                 router.push("/login");
             } else {
-                // --- Logic to catch "User already exists" ---
                 const serverMsg = data.detail || data.username?.[0] || data.message || "";
 
                 if (serverMsg.toLowerCase().includes("username") || response.status === 409) {
