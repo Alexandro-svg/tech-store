@@ -47,7 +47,7 @@ export default function RegisterPage() {
 
         if (formData.username.length < 3) errors.username = "Username must be at least 3 characters long.";
         if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = "Please enter a valid email.";
-        if (formData.password.length < 6) errors.password = "Password must be at least 6 characters.";
+        if (formData.password.length < 6) errors.password = "Password must be at least 6 characters long.";
         if (formData.password !== passwordConfirm) errors.password_confirm = "Passwords do not match.";
 
         setValidationErrors(errors);
@@ -112,7 +112,7 @@ export default function RegisterPage() {
                     <CardTitle className="text-2xl font-bold">Create Account</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <Form onSubmit={handleRegister} className="w-full grid grid-cols-2 grid-rows-7 gap-2 text-orange-50">
+                    <Form onSubmit={handleRegister} className="w-full grid grid-cols-2 gap-2 items-start">
 
                         <Field name="username" className='col-span-2' invalid={!!validationErrors.username}>
                             <FieldLabel>
@@ -189,28 +189,28 @@ export default function RegisterPage() {
 
                         <Field name="first_name" className='row-start-4'>
                             <FieldLabel>
-                                First Name <span className="text-foreground/70">(Optional)</span>
+                                First Name <span className="text-foreground/70">(Opt.)</span>
                             </FieldLabel>
                             <Input placeholder="John" type="text" value={formData.first_name} onChange={handleChange} />
                         </Field>
 
                         <Field name="last_name" className='row-start-4'>
                             <FieldLabel>
-                                Last Name <span className="text-foreground/70">(Optional)</span>
+                                Last Name <span className="text-foreground/70">(Opt.)</span>
                             </FieldLabel>
                             <Input placeholder="Doe" type="text" value={formData.last_name} onChange={handleChange} />
                         </Field>
 
                         <Field name="phone" className='col-span-2'>
                             <FieldLabel>
-                                Phone <span className="text-foreground/70">(Optional)</span>
+                                Phone <span className="text-foreground/70">(Opt.)</span>
                             </FieldLabel>
                             <Input placeholder="+1 (555) 123-4567" type='tel' value={formData.phone} onChange={handleChange} />
                         </Field>
 
                         <Field name="address" className='col-span-2 row-start-6'>
                             <FieldLabel>
-                                Address <span className="text-foreground/70">(Optional)</span>
+                                Address <span className="text-foreground/70">(Opt.)</span>
                             </FieldLabel>
                             <Input placeholder="123 Main St" type='text' value={formData.address} onChange={handleChange} />
                         </Field>
