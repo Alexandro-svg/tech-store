@@ -13,6 +13,7 @@ class Product(models.Model):
 class ProductVariant(models.Model):
     product = models.ForeignKey(Product, related_name='variants', on_delete=models.CASCADE)
     color = models.CharField(max_length=50, verbose_name="Цвет") 
+    color_code = models.CharField(max_length=7, default="#FFFFFF")
     storage = models.CharField(max_length=20, verbose_name="Память") 
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена")
     image = models.URLField(verbose_name="Ссылка на фото этого цвета")
