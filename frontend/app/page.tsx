@@ -8,17 +8,23 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 
-// 🔥 тип продукта
+export const dynamic = "force-dynamic";
+
 type Product = {
   id: number;
   name: string;
-  price: number;
+  price: string;
   image: string;
 };
 
-// 🔥 fetch с типом
 async function getProducts(): Promise<Product[]> {
-  const res = await fetch("http://backend:8000/api/products/", {
+  const backendApiUrl = process.env.BACKEND_API_URL;
+
+  if (!backendApiUrl) {
+    return [];
+  }
+
+  const res = await fetch(`${backendApiUrl}/api/products/`, {
     cache: "no-store",
   });
 
@@ -36,7 +42,6 @@ export default async function Home() {
   return (
     <div className="min-h-screen flex flex-col">
 
-      {/* КАРУСЕЛЬ */}
       <section>
         <Carousel className="border-b border-t h-120 relative overflow-hidden">
           <CarouselContent className="relative w-full h-120">
@@ -67,21 +72,15 @@ export default async function Home() {
         </Carousel>
       </section>
 
-      {/* 🔥 PRODUCTS */}
       <section className="p-10">
         <h1 className="text-3xl mb-5">Products</h1>
 
         <div className="grid grid-cols-4 gap-5">
           {products.map((p) => (
             <div key={p.id} className="border p-4 rounded-2xl">
-              
               <div className="h-40 relative mb-3">
                 <Image
-                  src={
-                    p.image.startsWith("http")
-                      ? p.image
-                      : `http://127.0.0.1:8000${p.image}`
-                  }
+                  src={p.image}
                   alt={p.name}
                   fill
                   className="object-cover rounded-xl"
