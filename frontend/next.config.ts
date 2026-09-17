@@ -4,13 +4,14 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "127.0.0.1",
-        port: "8000",
+        protocol: "https",
+        hostname: "touch.com.ua",
+        pathname: "/upload/**",
       },
       {
         protocol: "https",
-        hostname: "**", // 🔥 можно всё на dev
+        hostname: "images.unsplash.com",
+        pathname: "/photo-**",
       },
     ],
   },

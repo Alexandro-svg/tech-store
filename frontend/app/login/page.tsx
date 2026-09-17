@@ -19,6 +19,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import { publicBackendApiUrl } from "@/lib/api";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -40,7 +41,7 @@ export default function LoginPage() {
 
         try {
             // STEP 2: Получение токена (Get Token)
-            const response = await fetch("http://localhost:8000/api/token/", {
+            const response = await fetch(`${publicBackendApiUrl}/api/token/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -63,7 +64,7 @@ export default function LoginPage() {
                 setError(data.detail || "Invalid username or password.");
             }
         } catch (err) {
-            setError("Connection failed. Ensure the backend is running at localhost:8000.");
+            setError("Connection failed. Ensure the backend is running.");
         } finally {
             setIsLoading(false);
         }
@@ -108,7 +109,7 @@ export default function LoginPage() {
                             {isLoading ? "Authenticating..." : "Login"}
                         </Button>
                         <p className="text-center text-slate-500">
-                            Don't have an account? <a href="/registration" className="text-primary hover:underline">Sign Up</a>
+                            Don&apos;t have an account? <a href="/registration" className="text-primary hover:underline">Sign Up</a>
                         </p>
                     </CardFooter>
                 </Form>

@@ -3,47 +3,42 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Image from "next/image";
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
-import { pink } from '@mui/material/colors';
 import Radio from '@mui/material/Radio';
 import { Label } from "@/components/ui/label";
 import { Radio as CossRadio, RadioGroup } from "@/components/ui/radio-group";
 
+type ProductVariant = {
+    color: string;
+    storage: string;
+    price: string;
+    image: string;
+    stock: number;
+};
+
 interface ProductDetailsProps {
-    p: any;
+    p: {
+        name: string;
+        description: string;
+        variants: ProductVariant[];
+    };
 }
 
 export function ProductDetails({ p }: ProductDetailsProps) {
     const [value, setValue] = React.useState<number | null>(4);
 
-    const [selectedValue, setSelectedValue] = React.useState('a');
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedValue(event.target.value);
-    };
-
-    const controlProps = (item: string) => ({
-        checked: selectedValue === item,
-        onChange: handleChange,
-        value: item,
-        name: 'color-radio-button',
-        inputProps: { 'aria-label': item },
-    });
-
     const [selectedColor, setSelectedColor] = React.useState(p.variants[0].color);
     const [selectedStorage, setSelectedStorage] = React.useState(p.variants[0].storage);
 
     const activeVariant = p.variants.find(
-        (v: any) => v.color === selectedColor && v.storage === selectedStorage
+        (variant) => variant.color === selectedColor && variant.storage === selectedStorage
     ) || p.variants[0];
 
-    const uniqueColors = [...new Set(p.variants.map((v: any) => v.color))];
-    const uniqueStorage = [...new Set(p.variants.map((v: any) => v.storage))];
+    const uniqueColors = [...new Set(p.variants.map((variant) => variant.color))];
+    const uniqueStorage = [...new Set(p.variants.map((variant) => variant.storage))];
 
     const colorHexMap: Record<string, string> = {
         "Silver": "#e6e6e6",

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Figtree } from "next/font/google";
-import "./globals.css";
+
 import { Navbar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
 
-const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' });
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,9 +16,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const figtree = Figtree({
+  variable: "--font-figtree",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "TechByte",
-  description: "Electronics market",
+  title: "TechByte — Tech Store Demo",
+  description:
+    "A portfolio e-commerce project built with Django REST Framework and Next.js.",
 };
 
 export default function RootLayout({
@@ -29,12 +35,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", figtree.variable)}>
       <body
-        className="${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden bg-background mx-auto max-w-400"
+        className={cn(
+          geistSans.variable,
+          geistMono.variable,
+          "antialiased overflow-x-hidden bg-background mx-auto max-w-400"
+        )}
       >
         <Navbar />
-        <main className="">
-          {children}
-        </main>
+        <main>{children}</main>
       </body>
     </html>
   );

@@ -1,49 +1,43 @@
 services:
-  db:
-    image: postgres:15
-    container_name: eshop-db-1
-    environment:
-      - POSTGRES_DB=my_project
-      - POSTGRES_USER=eshop_user
-      - POSTGRES_PASSWORD=MyNewPass123
+  postgres:
+    image: postgres:16-alpine
+    env_file:
+      - ./backend/.env
+    ports:
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
 
   backend:
     build: ./backend
-    container_name: eshop-backend-1
+    env_file:
+      - ./backend/.env
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+    command: >
+      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend:/app
     depends_on:
-      - db
-    environment:
-      - DATABASE_URL=postgres://eshop_user:MyNewPass123@db:5432/my_project
+      postgres:
+        condition: service_healthy
 
   frontend:
     build: ./frontend
-    container_name: eshop-frontend-1
+    environment:
+      BACKEND_API_URL: http://backend:8000
+      NEXT_PUBLIC_BACKEND_API_URL: http://localhost:8000
     ports:
       - "3000:3000"
     depends_on:
       - backend
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    develop:
-      watch:
-        - path: ./frontend/app
-          action: sync
-          target: /app/app
-        - path: ./frontend/components
-          action: sync
-          target: /app/components
-        - path: ./frontend/public
-          action: sync
-          target: /app/public
-        - path: ./frontend/package.json
-          action: rebuild
-    working_dir: /app
 
 volumes:
   postgres_data:

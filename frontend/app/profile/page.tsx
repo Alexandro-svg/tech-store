@@ -7,6 +7,7 @@ import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EditProfilePopup } from "@/components/edit-profile";
+import { publicBackendApiUrl } from "@/lib/api";
 
 type User = {
     id: number;
@@ -57,13 +58,13 @@ export default function SupportPage() {
 
             try {
                 // 1. Initial attempt
-                let userRes = await fetch("http://localhost:8000/api/users/me/", {
+                let userRes = await fetch(`${publicBackendApiUrl}/api/users/me/`, {
                     headers: getHeaders(token || "")
                 });
 
                 // 2. REFRESH LOGIC: If access token is expired but refresh token exists
                 if (userRes.status === 401 && refreshToken) {
-                    const refreshRes = await fetch("http://localhost:8000/api/token/refresh/", {
+                    const refreshRes = await fetch(`${publicBackendApiUrl}/api/token/refresh/`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ refresh: refreshToken }),
@@ -75,7 +76,7 @@ export default function SupportPage() {
                         localStorage.setItem("access_token", token as string);
 
                         // Retry original request
-                        userRes = await fetch("http://localhost:8000/api/users/me/", {
+                        userRes = await fetch(`${publicBackendApiUrl}/api/users/me/`, {
                             headers: getHeaders(token as string)
                         });
                     } else {
@@ -90,7 +91,7 @@ export default function SupportPage() {
                     const userData = await userRes.json();
                     setUser(userData);
 
-                    const prodRes = await fetch("http://localhost:8000/api/products/", {
+                    const prodRes = await fetch(`${publicBackendApiUrl}/api/products/`, {
                         headers: getHeaders(token as string)
                     });
                     if (prodRes.ok) setProducts(await prodRes.json());

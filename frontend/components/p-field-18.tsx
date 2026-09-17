@@ -91,7 +91,7 @@ export default function Particle() {
         </div>
       </Field>
 
-      <Button loading={loading} type="submit">
+      <Button disabled={loading} type="submit">
         Submit
       </Button>
     </Form>

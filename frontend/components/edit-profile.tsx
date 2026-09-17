@@ -30,7 +30,7 @@ import { Input } from "@/components/ui/input";
 
 const FORM_TITLE = "Edit profile";
 const FORM_DESCRIPTION =
-    "Make changes to your profile here. Click save when you're done.";
+    "Make changes to your profile here. Click save when you&apos;re done.";
 // const TRIGGER_LABEL = "Open";
 const CANCEL_LABEL = "Cancel";
 const SAVE_LABEL = "Save";
@@ -85,7 +85,7 @@ export const EditProfilePopup = ({ onClose }: { onClose: () => void }) => {
             <DialogPopup className="sm:max-w-sm bg-card text-foreground">
                 <DialogHeader>
                     <DialogTitle>Edit profile</DialogTitle>
-                    <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
+                    <DialogDescription>Make changes to your profile here. Click save when you&apos;re done.</DialogDescription>
                 </DialogHeader>
                 <Form className="contents">
                     <DialogPanel className="grid gap-4">{formFields}</DialogPanel>

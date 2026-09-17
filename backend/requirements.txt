@@ -1,3 +1,7 @@
-django
-djangorestframework
-djangorestframework-simplejwt
+Django==6.0.2
+django-cors-headers==4.9.0
+djangorestframework==3.18.1
+djangorestframework-simplejwt==5.5.1
+psycopg[binary]==3.3.5
+python-dotenv==1.2.3
+ruff==0.16.7

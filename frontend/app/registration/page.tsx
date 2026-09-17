@@ -19,6 +19,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import { publicBackendApiUrl } from "@/lib/api";
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -33,15 +34,19 @@ export default function RegisterPage() {
     });
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    let [passwordConfirm, setPasswordConfirm] = useState<string | null>(null);
+    const [passwordConfirm, setPasswordConfirm] = useState<string | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const passwordConfirmation = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPasswordConfirm(e.target.value)
-        passwordConfirm === formData.password ? console.log('Passwords match') : console.log('Passwords dont match')
+        setPasswordConfirm(e.target.value);
+        console.log(
+            e.target.value === formData.password
+                ? "Passwords match"
+                : "Passwords do not match"
+        );
     };
 
     const handleRegister = async (e: React.FormEvent) => {
@@ -51,7 +56,7 @@ export default function RegisterPage() {
 
         try {
             // STEP 1: Регистрация (Sign Up)
-            const response = await fetch("http://localhost:8000/api/users/register/", {
+            const response = await fetch(`${publicBackendApiUrl}/api/users/register/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -68,7 +73,7 @@ export default function RegisterPage() {
                 setError(data.detail || "Registration failed. Please check your data.");
             }
         } catch (err) {
-            setError("Connection failed. Ensure the backend is running at localhost:8000.");
+            setError("Connection failed. Ensure the backend is running.");
         } finally {
             setIsLoading(false);
         }

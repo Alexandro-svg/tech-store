@@ -5,8 +5,6 @@ import {
     DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuPortal,
-    DropdownMenuSeparator,
-    DropdownMenuShortcut,
     DropdownMenuSub,
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
@@ -62,14 +60,11 @@ export const Navbar = () => {
                 <Link href="/">
                     <Button variant="link">Home</Button>
                 </Link>
-                <Link href='/stores'>
+                <Link href="/stores">
                     <Button variant="link">Stores</Button>
                 </Link>
-                <Link href='/support'>
+                <Link href="/support">
                     <Button variant="link">Support</Button>
-                </Link>
-                <Link href='/about-us'>
-                    <Button variant="link">About Us</Button>
                 </Link>
             </div>
             <div className="flex flex-1 justify-end">

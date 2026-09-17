@@ -1,7 +1,9 @@
 from rest_framework import generics, permissions
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
 from .models import User
 from .serializers import UserSerializer
-from rest_framework_simplejwt.authentication import JWTAuthentication
+
 
 class UserMeView(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer

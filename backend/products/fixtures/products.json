@@ -1,0 +1,68 @@
+[
+  {
+    "model": "products.product",
+    "pk": 101,
+    "fields": {
+      "name": "Aurora Wireless Headphones",
+      "description": "Demo over-ear headphones with active noise cancellation.",
+      "created_at": "2026-01-10T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 201,
+    "fields": {
+      "product": 101,
+      "color": "Midnight",
+      "color_code": "#1F2937",
+      "storage": "Standard",
+      "price": "129.99",
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+      "stock": 12
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 102,
+    "fields": {
+      "name": "Nimbus Mechanical Keyboard",
+      "description": "Demo compact mechanical keyboard for a desk setup.",
+      "created_at": "2026-01-11T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 202,
+    "fields": {
+      "product": 102,
+      "color": "Graphite",
+      "color_code": "#374151",
+      "storage": "TKL",
+      "price": "89.99",
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+      "stock": 18
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 103,
+    "fields": {
+      "name": "Atlas USB-C Hub",
+      "description": "Demo USB-C hub with HDMI, USB-A, and SD card ports.",
+      "created_at": "2026-01-12T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 203,
+    "fields": {
+      "product": 103,
+      "color": "Silver",
+      "color_code": "#D1D5DB",
+      "storage": "7 ports",
+      "price": "54.99",
+      "image": "https://images.unsplash.com/photo-1625948515291-69613efd103f",
+      "stock": 25
+    }
+  }
+]
