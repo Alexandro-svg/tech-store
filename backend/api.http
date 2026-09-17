@@ -1,0 +1,32 @@
+### 1. Получить список товаров (Проверка)
+GET http://127.0.0.1:8000/api/products/
+Accept: application/json
+
+###
+
+### 2. Логин (Получение токена)
+
+POST http://127.0.0.1:8000/api/token/
+Content-Type: application/json
+
+{
+    "username": "godmode",
+    "password": "admin12345"
+}
+
+###
+
+### 3. Создать новый товар (Вот тут нужен токен!)
+POST http://127.0.0.1:8000/api/products/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2Nzk1NTExLCJpYXQiOjE3NzY3OTUyMTEsImp0aSI6IjkwMzE1NDRjOTZmYjQzMjA4YTRlNmMzOTBhOWVjNjhlIiwidXNlcl9pZCI6IjIifQ.Ma-ekMTjtGXFA-x9LtEZkciwhm4xymeNeDLNwutCgSM
+
+###
+
+### 4. Обновить токен (Refresh)
+POST http://127.0.0.1:8000/api/token/refresh/
+Content-Type: application/json
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3Njg2NzIzNywiaWF0IjoxNzc2NzgwODM3LCJqdGkiOiIwZTg5NWQ1MzU0ZjA0N2ZjYjM3ZjIyYjA2OTNiZDQyMSIsInVzZXJfaWQiOiIyIn0.kt2hnXtLbHUkL3v71Vdo1QD7r41V0HaTZU0oHzQcHcc"
+}

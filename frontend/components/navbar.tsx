@@ -14,15 +14,20 @@ import Link from "next/link"
 
 export const Navbar = () => {
     return (
-        <div className="bg-background p-2 px-10 mb-7 flex justify-between sticky top-5 z-50">
+        <div className="bg-background p-7 px-10 flex justify-between sticky top-0 z-50">
             <div className="flex flex-1 gap-8">
-                <h1 className="text-2xl text-white font-bold">TechByte</h1>
-                <DropdownMenu>
+                {/* <h1 className="text-2xl text-white font-bold">TechByte</h1> */}
+                <Link href='/' className="flex gap-3 items-center justify-between">
+                    <img src="/logo_icon.png" alt="Logo Icon" className="w-10" />
+                    <img src="/logo_text.png" alt="Logo Icon" className="w-40" />
+                </Link>
+                <DropdownMenu modal={false}>
                     <DropdownMenuTrigger asChild>
                         <Button variant="default" className="bg-accent w-30 font-bold tracking-wide">CATALOG</Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="[&_*]:text-xl [&_*]:p-3 [&_*]:cursor-pointer">
                         <DropdownMenuGroup>
+                            <DropdownMenuItem>All</DropdownMenuItem>
                             <DropdownMenuItem>Sales</DropdownMenuItem>
                             <DropdownMenuSub>
                                 <DropdownMenuSubTrigger>Laptops</DropdownMenuSubTrigger>
@@ -50,7 +55,7 @@ export const Navbar = () => {
                     </DropdownMenuContent>
                 </DropdownMenu>
             </div>
-            
+
             <div className="flex flex-1 justify-center [&_*]:text-primary [&_*]:cursor-pointer">
                 <Link href="/">
                     <Button variant="link">Home</Button>
@@ -63,7 +68,9 @@ export const Navbar = () => {
                 </Link>
             </div>
             <div className="flex flex-1 justify-end">
-                <Button variant="outline" className="cursor-pointer text-primary">Profile</Button>
+                <Link href='/profile'>
+                    <Button variant="default" className="cursor-pointer text-primary px-5">Profile</Button>
+                </Link>
             </div>
         </div>
     )

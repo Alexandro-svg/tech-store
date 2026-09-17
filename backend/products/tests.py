@@ -6,8 +6,8 @@ from django.test import SimpleTestCase, TestCase
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from .models import Product
-from .serializers import ProductSerializer
+from .models import Product, ProductVariant
+from .serializers import ProductVariantSerializer
 
 
 class ProductListAPITests(APITestCase):
@@ -17,6 +17,11 @@ class ProductListAPITests(APITestCase):
         product = Product.objects.create(
             name="Test product",
             description="Product description",
+        )
+        ProductVariant.objects.create(
+            product=product,
+            color="Black",
+            storage="Standard",
             price=Decimal("99.99"),
             image="https://example.com/product.jpg",
         )
@@ -26,13 +31,12 @@ class ProductListAPITests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data[0]["id"], product.id)
         self.assertEqual(response.data[0]["name"], product.name)
+        self.assertEqual(response.data[0]["price"], Decimal("99.99"))
 
     def test_post_creates_product_and_returns_201(self):
         payload = {
             "name": "New product",
             "description": "Product description",
-            "price": "149.99",
-            "image": "https://example.com/product.jpg",
         }
 
         response = self.client.post(self.url, payload, format="json")
@@ -40,31 +44,29 @@ class ProductListAPITests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Product.objects.count(), 1)
         self.assertEqual(response.data["name"], payload["name"])
-        self.assertEqual(response.data["price"], payload["price"])
 
-    def test_post_with_negative_price_returns_400(self):
-        payload = {
-            "name": "Invalid product",
-            "description": "Product description",
-            "price": "-1.00",
-            "image": "https://example.com/product.jpg",
-        }
-
-        response = self.client.post(self.url, payload, format="json")
+    def test_post_with_invalid_data_returns_400(self):
+        response = self.client.post(
+            self.url,
+            {"name": "", "description": "Product description"},
+            format="json",
+        )
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertIn("price", response.data)
+        self.assertIn("name", response.data)
         self.assertEqual(Product.objects.count(), 0)
 
 
-class ProductSerializerTests(SimpleTestCase):
+class ProductVariantSerializerTests(SimpleTestCase):
     def test_negative_price_is_invalid(self):
-        serializer = ProductSerializer(
+        serializer = ProductVariantSerializer(
             data={
-                "name": "Invalid product",
-                "description": "Product description",
+                "color": "Black",
+                "color_code": "#000000",
+                "storage": "Standard",
                 "price": "-0.01",
                 "image": "https://example.com/product.jpg",
+                "stock": 1,
             }
         )
 
@@ -72,12 +74,18 @@ class ProductSerializerTests(SimpleTestCase):
         self.assertIn("price", serializer.errors)
 
 
-class ProductModelConstraintTests(TestCase):
+class ProductVariantModelConstraintTests(TestCase):
     def test_database_rejects_negative_price(self):
+        product = Product.objects.create(
+            name="Test product",
+            description="Product description",
+        )
+
         with self.assertRaises(IntegrityError), transaction.atomic():
-            Product.objects.create(
-                name="Invalid product",
-                description="Product description",
+            ProductVariant.objects.create(
+                product=product,
+                color="Black",
+                storage="Standard",
                 price=Decimal("-0.01"),
                 image="https://example.com/product.jpg",
             )
@@ -88,6 +96,4 @@ class ProductFixtureTests(TestCase):
         call_command("loaddata", "products", verbosity=0)
 
         self.assertEqual(Product.objects.count(), 3)
-        self.assertTrue(
-            Product.objects.filter(name="Aurora Wireless Headphones").exists()
-        )
+        self.assertEqual(ProductVariant.objects.count(), 3)
